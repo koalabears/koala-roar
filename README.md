@@ -1,8 +1,4 @@
-[![Build Status](https://travis-ci.org/koalabears/koala-roar.svg)](https://travis-ci.org/koalabears/koala-roar)
-
-<a href="https://codeclimate.com/github/koalabears/koala-roar"><img src="https://codeclimate.com/github/koalabears/koala-roar/badges/gpa.svg" /></a>
-
-<a href="https://codeclimate.com/github/koalabears/koala-roar/coverage"><img src="https://codeclimate.com/github/koalabears/koala-roar/badges/coverage.svg" /></a>
+[![Build Status](https://travis-ci.org/koalabears/koala-roar.svg)](https://travis-ci.org/koalabears/koala-roar) <a href="https://codeclimate.com/github/koalabears/koala-roar"><img src="https://codeclimate.com/github/koalabears/koala-roar/badges/gpa.svg" /></a> <a href="https://codeclimate.com/github/koalabears/koala-roar/coverage"><img src="https://codeclimate.com/github/koalabears/koala-roar/badges/coverage.svg" /></a> [![bitHound Score](https://www.bithound.io/github/koalabears/koala-roar/badges/score.svg)](https://www.bithound.io/github/koalabears/koala-roar) 
 
 
 # koala-roar
