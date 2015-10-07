@@ -27,9 +27,10 @@ var getTests = [
     {statusCode: 404, url: '/randomy/'},
     {statusCode: 200, url: '/'},
     {statusCode: 200, url: '/main.js'},
-    {statusCode: 200, url: '/main.css'}
+    {statusCode: 200, url: '/main.css'},
+    {statusCode: 200, url: '/roars/&codingisfun&naaz&2015-10-15'}
 ];
 
 getTests.forEach(function(testCase) {
-  testGetResponse(testCase.url, testCase.statusCode)
+  testGetResponse(testCase.url, testCase.statusCode);
 });
