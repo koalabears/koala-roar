@@ -7,7 +7,7 @@ var Server = (function(){
     var url = req.url;
     if(url === "/"){
       res.writeHead(200, {'Content-Type':'text/html'});
-      res.end("HELLO");
+      res.end("HELLO WORLD (so generic)");
     }
   }
 
