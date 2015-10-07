@@ -1,3 +1,10 @@
+[![Build Status](https://travis-ci.org/koalabears/koala-roar.svg)](https://travis-ci.org/koalabears/koala-roar)
+
+<a href="https://codeclimate.com/github/koalabears/koala-roar"><img src="https://codeclimate.com/github/koalabears/koala-roar/badges/gpa.svg" /></a>
+
+<a href="https://codeclimate.com/github/koalabears/koala-roar/coverage"><img src="https://codeclimate.com/github/koalabears/koala-roar/badges/coverage.svg" /></a>
+
+
 # koala-roar
 Our 4th project - a twitter clone. ROAR!
 
