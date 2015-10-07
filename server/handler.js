@@ -19,6 +19,9 @@ module.exports = function(req, res) {
     res.end(indexJS);
   } else if (url.match(/^(\/test)/)) {
     serveTest(req, res);
+  } else if (url.match(/^(\/roars)/)) {
+    console.log("--------------test--------------");
+    postRoar(req, res);
   } else {
     res.writeHead(404);
     res.end();
@@ -38,4 +41,14 @@ module.exports = function(req, res) {
       res.end('error: ' + req.url + ' not found');
     }
   }
+
+  function postRoar(req, res){
+    var url = req.url;
+    var details = url.split("&");
+    console.log(details);
+    res.writeHead(200);
+    res.end();
+  }
+
+
 };
