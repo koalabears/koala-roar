@@ -43,8 +43,15 @@ var server = (function() {
 
 // function that creates client id in increments
   function userID(req,res){
-    client.INCR('userID',redis.print);
-    }
+    client.INCR('userID', function(err, reply) {
+      // redis.print;
+      // client.get('userID', function(err, reply) {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        console.log("!!!" + reply);
+        res.end(reply.toString());
+      // })
+    });
+  }
 
   function serveTest(req, res){
     var test = fs.readFileSync(__dirname + '/../test/front-end/test.html');

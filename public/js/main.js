@@ -2,13 +2,16 @@ var front = (function() {
 
   var button = document.getElementById("button");
   var textInput = document.getElementById("roar");
-  var username = document.getElementById("username");
+  // var username = document.getElementById("username");
   var dateInput = document.getElementById("date");
   var roarContent = document.getElementById("roarContent");
+  var userName;
 
   button.addEventListener("click", function(e){
     e.preventDefault();
-    var url= "/roars/" + "&" + textInput.value + "&" + username.value + "&" + dateInput.value;
+    var d = new Date();
+    var timeStamp = d.getTime();
+    var url= "/roars/" + "&" + textInput.value + "&" + userName + "&" + timeStamp;
     var req = new XMLHttpRequest();
 
     req.onreadystatechange = function(){
@@ -22,59 +25,8 @@ var front = (function() {
 
   });
 
-
-  // document.getElementById("tester").addEventListener("click", function(){
-  //   var url= "/allPosts";
-  //   var req = new XMLHttpRequest();
-  //
-  //   req.onreadystatechange = function(){
-  //     if(req.readyState === 4 && req.status === 200){
-  //       // getPost();
-  //       console.log(req.responseText);
-  //     }
-  //   };
-  //   req.open("GET", url, true);
-  //   req.send();
-  // });
-
-  document.getElementById("userID").addEventListener("click", function(){
-    var url= "/users";
-    var req = new XMLHttpRequest();
-    req.onreadystatechange = function(){
-      if(req.readyState === 4 && req.status === 200){
-        // getPost();
-        console.log(req.responseText);
-      }
-    };
-    req.open("GET", url, true);
-    req.send();
-  }
-  
-    var b2 = document.getElementById("tester");
-    b2.addEventListener("click", function(e) {
-      console.log('click!');
-      createPage();
-  });
-
-
-  // function(){
-  //   var url= "/allPosts";
-  //   var req = new XMLHttpRequest();
-  //
-  //   req.onreadystatechange = function(){
-  //     if(req.readyState === 4 && req.status === 200){
-  //       // getPost();
-  //       console.log(req.responseText);
-  //
-  //
-  //     }
-  //   };
-  //   req.open("GET", url, true);
-  //   req.send();
-  //
-  // });
-
-  function createPage(userId) {
+  function createPage(userId, name) {
+    userName = name;
     var req = new XMLHttpRequest();
     req.open('GET', '/allPosts');
     req.onreadystatechange = function() {
