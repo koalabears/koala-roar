@@ -26,14 +26,16 @@ function testGetResponse(url, statusCode) {
 var getTests = [
     {statusCode: 404, url: '/randomy/'},
     {statusCode: 200, url: '/'},
-      {statusCode: 200, url: '/main.js'},
-      {statusCode: 200, url: '/cookie.js'},
-      {statusCode: 200, url: '/main.css'},
-      {statusCode: 200, url: '/test.html'},
-      {statusCode: 404, url: '/test.htmlwoah'},
+    {statusCode: 200, url: '/main.js'},
+    {statusCode: 200, url: '/cookie.js'},
+    {statusCode: 200, url: '/main.css'},
+    {statusCode: 200, url: '/test.html'},
+    {statusCode: 404, url: '/test.htmlwoah'},
+    {statusCode: 200, url: '/roars/&codingisfun&naaz&2015-10-15'},
     {statusCode: 200, url: '/test.js'}
+
 ];
 
 getTests.forEach(function(testCase) {
-  testGetResponse(testCase.url, testCase.statusCode)
+  testGetResponse(testCase.url, testCase.statusCode);
 });
