@@ -10,7 +10,7 @@ var server = (function() {
   var indexJS = fs.readFileSync(__dirname + '/../public/js/main.js');
   var cookieJS = fs.readFileSync(__dirname + '/../public/js/cookie.js');
 
-  var client = redis.createClient();
+  var client = redis.createClient(process.env.REDIS_URL, {no_ready_check: true});
 
   function handler(req, res) {
     var url = req.url;
@@ -31,17 +31,20 @@ var server = (function() {
       serveTest(req, res);
     } else if (url.match(/^(\/roars)/)) {
       postRoar(req, res);
-    } else if(url === '/allPosts') {
+    } else if (url === '/allPosts') {
       printPosts(req, res);
     } else if(url.match(/^(\/users)/)) {
-      //add function that creates client id in increments
+      userID(req,res);//add function that creates client id in increments
     } else {
       res.writeHead(404);
       res.end();
     }
   }
 
-
+// function that creates client id in increments
+  function userID(req,res){
+    client.INCR('userID',redis.print);
+    }
 
   function serveTest(req, res){
     var test = fs.readFileSync(__dirname + '/../test/front-end/test.html');
@@ -58,6 +61,9 @@ var server = (function() {
       res.end('error: ' + req.url + ' not found');
     }
   }
+
+
+
 
   function postRoar(req, res){
     var url = req.url;
@@ -121,6 +127,7 @@ var server = (function() {
     client: client,
     clientQuit: client.quit
   };
+
 
 
 }());

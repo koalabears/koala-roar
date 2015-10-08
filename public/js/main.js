@@ -22,10 +22,38 @@ var front = (function() {
 
   });
 
-  var b2 = document.getElementById("tester");
-  b2.addEventListener("click", function(e) {
-    console.log('click!');
-    createPage();
+
+  // document.getElementById("tester").addEventListener("click", function(){
+  //   var url= "/allPosts";
+  //   var req = new XMLHttpRequest();
+  //
+  //   req.onreadystatechange = function(){
+  //     if(req.readyState === 4 && req.status === 200){
+  //       // getPost();
+  //       console.log(req.responseText);
+  //     }
+  //   };
+  //   req.open("GET", url, true);
+  //   req.send();
+  // });
+
+  document.getElementById("userID").addEventListener("click", function(){
+    var url= "/users";
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function(){
+      if(req.readyState === 4 && req.status === 200){
+        // getPost();
+        console.log(req.responseText);
+      }
+    };
+    req.open("GET", url, true);
+    req.send();
+  }
+  
+    var b2 = document.getElementById("tester");
+    b2.addEventListener("click", function(e) {
+      console.log('click!');
+      createPage();
   });
 
 
