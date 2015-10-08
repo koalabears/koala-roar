@@ -2,7 +2,6 @@ var front = (function() {
 
   var button = document.getElementById("button");
   var textInput = document.getElementById("roar");
-  // var username = document.getElementById("username");
   var dateInput = document.getElementById("date");
   var roarContent = document.getElementById("roarContent");
   var userName;
