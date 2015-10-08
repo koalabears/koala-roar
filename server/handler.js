@@ -8,6 +8,8 @@ var server = (function() {
   var index = fs.readFileSync(__dirname + '/../public/html/index.html');
   var indexStyle = fs.readFileSync(__dirname + '/../public/css/main.css');
   var indexJS = fs.readFileSync(__dirname + '/../public/js/main.js');
+  var cookieJS = fs.readFileSync(__dirname + '/../public/js/cookie.js');
+
   var client = redis.createClient();
 
   function handler(req, res) {
@@ -22,6 +24,9 @@ var server = (function() {
     } else if (url === '/main.js') {
       res.writeHead(200, {'Content-Type' : 'text/js'});
       res.end(indexJS);
+    } else if (url === '/cookie.js') {
+        res.writeHead(200, {'Content-Type' : 'text/js'});
+        res.end(cookieJS);
     } else if (url.match(/^(\/test)/)) {
       serveTest(req, res);
     } else if (url.match(/^(\/roars)/)) {
@@ -33,6 +38,8 @@ var server = (function() {
       res.end();
     }
   }
+
+
 
   function serveTest(req, res){
     var test = fs.readFileSync(__dirname + '/../test/front-end/test.html');
