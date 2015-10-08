@@ -29,6 +29,7 @@
   ],
   "dependencies": {
     "hiredis": "^0.4.1",
-    "redis": "^2.1.0"
+    "redis": "^2.1.0",
+    "redis-server": "0.0.1"
   }
 }

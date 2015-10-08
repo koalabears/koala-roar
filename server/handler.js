@@ -43,8 +43,15 @@ var server = (function() {
 
 // function that creates client id in increments
   function userID(req,res){
-    client.INCR('userID',redis.print);
-    }
+    client.INCR('userID', function(err, reply) {
+      // redis.print;
+      // client.get('userID', function(err, reply) {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        console.log("!!!" + reply);
+        res.end(reply.toString());
+      // })
+    });
+  }
 
   function serveTest(req, res){
     var test = fs.readFileSync(__dirname + '/../test/front-end/test.html');
@@ -93,7 +100,7 @@ var server = (function() {
     client.get('roarCount', function(err, reply) {
       var roarCount = reply;
       var count = 0;
-
+      res.write("{");
       console.log(typeof roarCount + "  " + roarCount);
       for(var i = 1; i <= roarCount; i++) {
 
@@ -102,12 +109,14 @@ var server = (function() {
           count++;
           var post = reply;
           console.log(post + count + "  " + roarCount);
-          res.write(JSON.stringify(post));
 
           if(count.toString() === roarCount) {
               console.log("*****END*****", roarCount);
-            res.end();
-
+              // res.write(JSON.stringify(post));
+            res.write("\"" + (count-1) + "\":" + JSON.stringify(post));
+            res.end(", \"length\": \"" + count + "\"}")
+          } else {
+            res.write("\"" + (count-1) + "\":" + JSON.stringify(post) + ',');
           }
         });
       }
