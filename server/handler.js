@@ -77,13 +77,19 @@ var server = (function() {
     var details = url.split("&");
     client.INCR('roarCount', function(err, roarCount){
       var id = roarCount;
-      client.HMSET('roar:' + id, 'roar', details[1],'user', details[2], 'date', details[3], function(err, reply){
+      client.HMSET('roar:' + id, 'roar', details[1],'user', details[2],
+      'date', details[3],  'usrId', details[4], function(err, reply){
         if (err) {
           res.end("error");
         } else {
           details.push(id);
-          res.end(JSON.stringify(details));
-
+          tweet = {
+            date: details[3],
+            user: details[2],
+            usrId: details[4],
+            roar: details[1]
+          };
+          res.end(JSON.stringify(tweet));
         }
       });
 

@@ -8,7 +8,7 @@ var cookies = (function() {
     "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
     var name =
     decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" +
-    encodeURIComponent(cookieName+"-id").replace(/[\-\.\+\*]/g, "\\$&") +
+    encodeURIComponent(cookieName+"-name").replace(/[\-\.\+\*]/g, "\\$&") +
     "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
 
 
