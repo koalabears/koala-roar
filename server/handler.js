@@ -10,7 +10,7 @@ var server = (function() {
   var indexJS = fs.readFileSync(__dirname + '/../public/js/main.js');
   var cookieJS = fs.readFileSync(__dirname + '/../public/js/cookie.js');
 
-  var client = redis.createClient();
+  var client = redis.createClient(process.env.REDIS_URL, {no_ready_check: true});
 
   function handler(req, res) {
     var url = req.url;
