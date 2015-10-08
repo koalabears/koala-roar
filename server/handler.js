@@ -5,6 +5,7 @@ module.exports = function(req, res) {
   var index = fs.readFileSync(__dirname + '/../public/html/index.html');
   var indexStyle = fs.readFileSync(__dirname + '/../public/css/main.css');
   var indexJS = fs.readFileSync(__dirname + '/../public/js/main.js');
+  var cookieJS = fs.readFileSync(__dirname + '/../public/js/cookie.js');
 
   var url = req.url;
   console.log(url);
@@ -17,6 +18,9 @@ module.exports = function(req, res) {
   } else if (url === '/main.js') {
     res.writeHead(200, {'Content-Type' : 'text/js'});
     res.end(indexJS);
+  } else if (url === '/cookie.js') {
+    res.writeHead(200, {'Content-Type' : 'text/js'});
+    res.end(cookieJS);
   } else if (url.match(/^(\/test)/)) {
     serveTest(req, res);
   } else if (url.match(/^(\/roars)/)) {
