@@ -14,4 +14,15 @@ var front = (function() {
 
   });
 
+  function createPage() {
+    var req = new XMLHttpRequest();
+    req.open('GET', '/allPosts')
+  }
+
+  function createPageHtml(userId) {
+    //dynamically build site!
+    console.log('page created. User id = ' + userId);
+  }
+
+  cookies.auth(createPage);
 })();
