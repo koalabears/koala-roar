@@ -1,11 +1,11 @@
 var test = require('tape');
 var shot = require('shot');
-var handler = require('../server/handler.js');
+var server = require('../server/handler.js');
 
 console.log(typeof handler);
 
 test("handler is function", function(t) {
-  t.equal(typeof handler, 'function');
+  t.equal(typeof server.handler, 'function');
   t.end();
 });
 
@@ -16,8 +16,9 @@ function testGetResponse(url, statusCode) {
       method: 'GET',
       url: url
     };
-    shot.inject(handler, req, function(res) {
+    shot.inject(server.handler, req, function(res) {
       t.equal(res.statusCode, statusCode);
+      console.log(res.statusCode);
       t.end();
     });
   });
@@ -38,3 +39,5 @@ var getTests = [
 getTests.forEach(function(testCase) {
   testGetResponse(testCase.url, testCase.statusCode);
 });
+
+server.client.quit();
