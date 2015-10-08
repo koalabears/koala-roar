@@ -10,8 +10,23 @@ var front = (function() {
     var url= "/roars/" + "&" + textInput.value + "&" + username.value + "&" + dateInput.value;
     var req = new XMLHttpRequest();
     req.open("POST", url);
+    req.onreadystatechange = function(){
+      if(req.readyState === 4 && req.status === 200){
+        getPost();
+        
+      }
+    };
     req.send();
 
   });
+
+  function getPost(req, res) {
+    var url = '/allPosts';
+    req = new XMLHttpRequest();
+    req.open("GET", url);
+    req.send();
+  }
+
+
 
 })();

@@ -26,5 +26,9 @@
   },
   "pre-commit": [
     "test"
-  ]
+  ],
+  "dependencies": {
+    "hiredis": "^0.4.1",
+    "redis": "^2.1.0"
+  }
 }

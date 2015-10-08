@@ -1,4 +1,6 @@
 var fs = require('fs');
+var redis = require('redis');
+var client = redis.createClient();
 
 module.exports = function(req, res) {
 
@@ -20,8 +22,9 @@ module.exports = function(req, res) {
   } else if (url.match(/^(\/test)/)) {
     serveTest(req, res);
   } else if (url.match(/^(\/roars)/)) {
-    console.log("--------------test--------------");
     postRoar(req, res);
+  } else if(url === '/allPosts') {
+    printPosts();
   } else {
     res.writeHead(404);
     res.end();
@@ -45,10 +48,33 @@ module.exports = function(req, res) {
   function postRoar(req, res){
     var url = req.url;
     var details = url.split("&");
+    client.INCR('roarCount', function(err, roarCount){
+      var id = roarCount;
+      client.HMSET('roar:' + id, 'roar', details[1],'user', details[2], 'date', details[3], redis.print);
+    });
     console.log(details);
     res.writeHead(200);
     res.end();
   }
+
+  function printPosts(){
+    res.writeHead(200, {'Content-Type':'text/html'});
+    console.log("________________");
+    client.get('roarCount', function(err, reply) {
+      var roarCount = reply;
+      for(var i = 1; i <= roarCount; i++) {
+        // var count = 1;
+        // count ++;
+        client.HGETALL('roar:' + i, function(err, reply){
+          var post = '<li>' + reply.roar + '</li>';
+        res.end(post);
+        });
+      }
+    });
+    // res.write("hello");
+    // res.end();
+  }
+
 
 
 };
