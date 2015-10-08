@@ -22,10 +22,10 @@ var cookies = (function() {
 
   function userAuth(callback) {
     var userId, button, usrInput;
-    var html = "<div class=\"auth\"><input id=\"userNameInput\"></input>"
+    var html = "<div class=\"auth\"><input id=\"userNameInput\"></input>";
     var body = document.getElementsByTagName('body')[0];
-    html += "<button id=\"authButton\">create user</button></div>"
-    body.innerHTML += html;
+    html += "<button id=\"authButton\">create user</button></div>";
+    body.innerHTML += html; // !!!!!!
     usrInput = document.getElementById('userNameInput');
 
     button = document.getElementById("authButton");
