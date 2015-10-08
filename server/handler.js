@@ -33,6 +33,8 @@ var server = (function() {
       postRoar(req, res);
     } else if(url === '/allPosts') {
       printPosts(req, res);
+    } else if(url.match(/^(\/users)/)) {
+      //add function that creates client id in increments
     } else {
       res.writeHead(404);
       res.end();
