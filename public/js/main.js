@@ -4,7 +4,6 @@ var front = (function() {
   var div = document.getElementById('roarContent');
   var userName, userID;
 
-
   function postEvent(e) {
     e.preventDefault();
     var textInput = document.getElementById("roar");
@@ -21,6 +20,7 @@ var front = (function() {
         tweet = JSON.parse(req.responseText);
         // getPost();
         tweetWrap.innerHTML = makeTweet(tweet) + tweetWrap.innerHTML;
+        addDeleteListeners();
       }
     };
     req.open("POST", url, true);
@@ -53,7 +53,7 @@ var front = (function() {
   }
 
 function addDeleteListeners() {
-    var wrapper = document.getElementById('roarContent');
+    var wrapper = document.getElementById('tweetWrap');
     var tweetDivs = Array.prototype.slice.call(document.getElementsByClassName("remove"));
     tweetDivs.forEach(function(tweetDiv){
       tweetDiv.getElementsByClassName("delete")[0].addEventListener('click', function(){
