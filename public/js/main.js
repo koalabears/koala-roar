@@ -25,7 +25,6 @@ var front = (function() {
     };
     req.open("POST", url, true);
     req.send();
-
   }
 
   function createPage(userId, name) {
