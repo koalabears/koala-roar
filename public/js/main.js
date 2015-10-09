@@ -51,7 +51,7 @@ var front = (function() {
       html = "<div class=\"growl remove\">" + "[" + data.date + "]" + data.user + "(" + data.usrId + "): " + data.roar;
       html += "!";
       // TODO: add delete button
-      html += "<button class=\"delete\">";
+      html += "<button class=\"delete\">x</button>";
     }
     html += "</div>";
 
