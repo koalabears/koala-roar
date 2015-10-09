@@ -1,6 +1,7 @@
 var test = require('tape');
 var shot = require('shot');
 var server = require('../server/handler.js');
+var db = require('../server/redis.js');
 
 console.log(typeof handler);
 
@@ -44,4 +45,4 @@ getTests.forEach(function(testCase) {
   testGetResponse(testCase.url, testCase.statusCode);
 });
 
-server.client.quit();
+db.client.quit();
