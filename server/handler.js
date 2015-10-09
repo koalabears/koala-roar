@@ -121,7 +121,6 @@ var server = (function() {
 
           if(count.toString() === roarCount) {
               console.log("*****END*****", roarCount);
-              // res.write(JSON.stringify(post));
             res.write("\"" + (count-1) + "\":" + JSON.stringify(post));
             res.end(", \"length\": \"" + count + "\"}");
           } else {
@@ -129,14 +128,10 @@ var server = (function() {
           }
         });
       }
-      // res.end("goodbye");
     });
       // TODO: where do we put this??
 
   }
-    // res.write("hello");
-    // res.end();
-    // var clientQuit = client.quit;
 
   return {
     handler: handler,

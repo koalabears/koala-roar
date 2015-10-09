@@ -1,7 +1,6 @@
 var front = (function() {
 
   var dateInput = document.getElementById("date");
-  // var roarContent = document.getElementById("roarContent");
   var div = document.getElementById('roarContent');
   var userName, userID;
 
@@ -21,7 +20,6 @@ var front = (function() {
         tweet = JSON.parse(req.responseText);
         // getPost();
         div.innerHTML += makeTweet(tweet);
-        // console.log(req.responseText);
       }
     };
     req.open("POST", url, true);
@@ -38,12 +36,12 @@ var front = (function() {
       if (req.readyState === 4 && req.status === 200) {
         createPageHtml(JSON.parse(req.responseText), userId);
       }
-    }
+    };
     req.send();
   }
 
   function makeTweet(data) {
-    var html = "<div class=\"growl\">"
+    var html = "<div class=\"growl\">";
     html += "[" + data.date + "]" + data.user + "(" + data.usrId + "): " + data.roar;
     if (userID === data.usrId) {
       html += "!";
@@ -58,14 +56,14 @@ var front = (function() {
     var i, body, button;
     //dynamically build site!
     var html =
+
         "<input placeholder=\"text\" id=\"roar\"></input>" +
         "<button id=\"button\">submit</button>";
-    // console.log(typeof JSON.parse(data));
     for (i = 0; i < data.length; i++) {
       html += makeTweet(data[i]);
       console.log(i + " : " + data[i]);
+
     }
-    // console.log(data);
 
     div.innerHTML = html;
     button = document.getElementById("button");
