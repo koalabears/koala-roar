@@ -53,7 +53,7 @@ var front = (function() {
   }
 
 function addDeleteListeners() {
-    var wrapper = document.getElementById('roarContent');
+    var wrapper = document.getElementById('tweetWrap');
     var tweetDivs = Array.prototype.slice.call(document.getElementsByClassName("remove"));
     tweetDivs.forEach(function(tweetDiv){
       tweetDiv.getElementsByClassName("delete")[0].addEventListener('click', function(){
