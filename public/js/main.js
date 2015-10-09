@@ -4,7 +4,6 @@ var front = (function() {
   var div = document.getElementById('roarContent');
   var userName, userID;
 
-
   function postEvent(e) {
     e.preventDefault();
     var textInput = document.getElementById("roar");
