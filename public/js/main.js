@@ -20,6 +20,7 @@ var front = (function() {
         tweet = JSON.parse(req.responseText);
         // getPost();
         tweetWrap.innerHTML = makeTweet(tweet) + tweetWrap.innerHTML;
+        addDeleteListeners();
       }
     };
     req.open("POST", url, true);
