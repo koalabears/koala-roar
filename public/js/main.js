@@ -1,7 +1,6 @@
 var front = (function() {
 
   var dateInput = document.getElementById("date");
-  // var roarContent = document.getElementById("roarContent");
   var div = document.getElementById('roarContent');
   var userName, userID;
 
@@ -76,14 +75,11 @@ var front = (function() {
         "<input type=\"text\" placeholder=\"text\" name=\"roar\" id=\"roar\"></input>"+
         "<input type=\"submit\" id=\"button\"></input>"+
       "</form>";
-    // console.log(typeof JSON.parse(data));
     if (data.length) {
       for (i = 0; i < data.length; i++) {
         if (data[i]) html += makeTweet(data[i]);
-        // console.log(i + " : " + data[i]);
       }
     }
-    // console.log(data);
 
     div.innerHTML = html;
     addDeleteListeners();
