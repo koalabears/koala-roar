@@ -16,10 +16,11 @@ var front = (function() {
 
     req.onreadystatechange = function(){
       var tweet, data;
+      var tweetDiv = document.getElementById('tweetWrap');
       if(req.readyState === 4 && req.status === 200){
         tweet = JSON.parse(req.responseText);
         // getPost();
-        div.innerHTML += makeTweet(tweet);
+        tweetWrap.innerHTML = makeTweet(tweet) + tweetWrap.innerHTML;
       }
     };
     req.open("POST", url, true);
@@ -56,14 +57,14 @@ var front = (function() {
     var i, body, button;
     //dynamically build site!
     var html =
-
         "<input placeholder=\"text\" id=\"roar\"></input>" +
-        "<button id=\"button\">submit</button>";
-    for (i = 0; i < data.length; i++) {
+        "<button id=\"button\">submit</button>" +
+        "<div id =\"tweetWrap\">";
+    for (i = data.length-1; i >= 0; i--) {
       html += makeTweet(data[i]);
       console.log(i + " : " + data[i]);
-
     }
+    html += "</div>";
 
     div.innerHTML = html;
     button = document.getElementById("button");
