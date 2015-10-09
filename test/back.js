@@ -6,7 +6,7 @@ var db = require('../server/redis.js');
 console.log(typeof handler);
 
 test("handler is function", function(t) {
-  t.equal(typeof server.handler, 'function');
+  t.equal(typeof server.handler, 'function', 'the handler is a function');
   t.end();
 });
 
@@ -18,7 +18,7 @@ function testGetResponse(url, statusCode) {
       url: url
     };
     shot.inject(server.handler, req, function(res) {
-      t.equal(res.statusCode, statusCode);
+      t.equal(res.statusCode, statusCode, 'Status code for response and the actual status code matches!');
       console.log(res.statusCode);
       t.end();
     });
