@@ -1,4 +1,4 @@
-module.exports = (function() {
+
 
   var redis = require('redis');
   var client = redis.createClient(process.env.REDIS_URL, {no_ready_check: true});
@@ -8,8 +8,6 @@ module.exports = (function() {
     var details = url.split("&");
     details[1] = details[1].replace(/%20/g, ' ');
     details[2] = details[2].replace(/%20/g, ' ');
-    console.log(typeof client);
-    console.log('-------------------');
     client.INCR('roarCount', function(err, roarCount){
       var id = roarCount;
       client.HMSET('roar:' + id, 'roar', details[1],'user', details[2],
@@ -54,15 +52,13 @@ module.exports = (function() {
   function userID(req,res){
     client.INCR('userID', function(err, reply) {
         res.writeHead(200, {'Content-Type': 'text/plain'});
-        console.log("!!!" + reply);
         res.end(reply.toString());
     });
   }
 
-  return {
+  module.exports = {
     postRoar: postRoar,
     printPosts: printPosts,
     createUserId: userID,
     client: client
-  }
-}());
+  };
