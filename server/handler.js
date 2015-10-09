@@ -76,6 +76,8 @@ var server = (function() {
   function postRoar(req, res){
     var url = req.url;
     var details = url.split("&");
+    details[1] = details[1].replace(/%20/g, ' ');
+    details[2] = details[2].replace(/%20/g, ' ');
     client.INCR('roarCount', function(err, roarCount){
       var id = roarCount;
       client.HMSET('roar:' + id, 'roar', details[1],'user', details[2],
