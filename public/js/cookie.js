@@ -23,6 +23,7 @@ var cookies = (function() {
     var id = res.responseText;
     document.cookie = cookieName+"-id" + '=' + id;
     document.cookie = cookieName+"-name" + '=' + name;
+    return id;
   }
 
   function userAuth(callback) {
@@ -43,6 +44,7 @@ var cookies = (function() {
       req.onreadystatechange = function() {
         if (req.readyState === 4 && req.status === 200) {
           userId = setCookies(req, usrInput.value);
+          name = usrInput.value;
           body.removeChild(document.getElementById('authDiv'));
           callback(userId, name);
         }

@@ -11,6 +11,7 @@ var server = (function() {
   var cookieJS = fs.readFileSync(__dirname + '/../public/js/cookie.js');
 
   var client = redis.createClient(process.env.REDIS_URL, {no_ready_check: true});
+  //
 
   function handler(req, res) {
     var url = req.url;
@@ -120,7 +121,7 @@ var server = (function() {
               console.log("*****END*****", roarCount);
               // res.write(JSON.stringify(post));
             res.write("\"" + (count-1) + "\":" + JSON.stringify(post));
-            res.end(", \"length\": \"" + count + "\"}")
+            res.end(", \"length\": \"" + count + "\"}");
           } else {
             res.write("\"" + (count-1) + "\":" + JSON.stringify(post) + ',');
           }
