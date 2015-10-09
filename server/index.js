@@ -1,8 +1,7 @@
 var http = require("http");
-var server = require("./handler.js");
+var handler = require("./handler.js");
 var port = process.env.PORT || 5000;
 
-
-http.createServer(server.handler).listen(port, function() {
+http.createServer(handler).listen(port, function() {
   console.log('node http server listening on http://localhost:' + port);
 });
