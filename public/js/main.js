@@ -44,12 +44,22 @@ var front = (function() {
     var html = "<div class=\"growl\">";
     html += "[" + data.date + "]" + data.user + "(" + data.usrId + "): " + data.roar;
     if (userID === data.usrId) {
-      html += "!";
-      // TODO: add delete button
+      html = "<div class=\"growl remove\">" + "[" + data.date + "]" + data.user + "(" + data.usrId + "): " + data.roar;
+      html += "<button class=\"delete\">x</button>";
     }
     html += "</div>";
 
     return html;
+  }
+
+function addDeleteListeners() {
+    var wrapper = document.getElementById('roarContent');
+    var tweetDivs = Array.prototype.slice.call(document.getElementsByClassName("remove"));
+    tweetDivs.forEach(function(tweetDiv){
+      tweetDiv.getElementsByClassName("delete")[0].addEventListener('click', function(){
+        wrapper.removeChild(tweetDiv);
+      });
+    });
   }
 
   function createPageHtml(data, userId) {
@@ -66,6 +76,7 @@ var front = (function() {
     }
 
     div.innerHTML = html;
+    addDeleteListeners();
     button = document.getElementById("button");
     button.addEventListener("click", postEvent);
     console.log(html);
